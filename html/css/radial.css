@@ -1,0 +1,164 @@
+/* Import Exo 2 font as defined in style guide */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Colors - matching Legacy Hotel theme */
+    --primary-color: #83273e;
+    --primary-hover: #8d2842;
+    --text-color: #ffffff;
+    --text-secondary: #d4d4d4;
+    --bg-dark: rgba(23, 23, 23, 0.9);
+    --bg-darker: rgba(18, 18, 18, 0.95);
+    --bg-item: rgba(23, 23, 23, 0.8);
+    --bg-item-hover: rgba(35, 35, 35, 0.9);
+    --border-color: rgba(70, 70, 70, 0.2);
+    --border-radius: 4px;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    --transition: all 0.15s ease-out;
+
+    /* Font properties */
+    --font-primary: "Exo 2", sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Typography sizes */
+    --title-size: 16px;
+    --body-size: 14px;
+    --small-size: 12px;
+    --menu-label-size: 13px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+    user-select: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#radialmenu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 100;
+}
+
+.radialmenu-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center button */
+.center-button {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 20px;
+    z-index: 101;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.center-button:hover {
+    transform: scale(1.05);
+}
+
+/* Menu items */
+.menu-item {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-dark);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    transform: scale(0.9);
+    overflow: hidden;
+}
+
+.menu-item.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu-item:hover {
+    background-color: var(--bg-item-hover);
+    transform: scale(1.05);
+}
+
+.menu-item.blue {
+    background-color: #1e88e5;
+}
+
+.menu-item.blue:hover {
+    background-color: #1976d2;
+}
+
+.menu-item i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.menu-item .item-label {
+    font-size: var(--menu-label-size);
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    padding: 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Animation for menu appearance */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.menu-item.animate {
+    animation: fadeIn 0.2s ease-out forwards;
+}
+
+.menu-item:nth-child(1) { animation-delay: 0.02s; }
+.menu-item:nth-child(2) { animation-delay: 0.04s; }
+.menu-item:nth-child(3) { animation-delay: 0.06s; }
+.menu-item:nth-child(4) { animation-delay: 0.08s; }
+.menu-item:nth-child(5) { animation-delay: 0.1s; }
+.menu-item:nth-child(6) { animation-delay: 0.12s; }
+.menu-item:nth-child(7) { animation-delay: 0.14s; }
+.menu-item:nth-child(8) { animation-delay: 0.16s; }
+.menu-item:nth-child(9) { animation-delay: 0.18s; }
+.menu-item:nth-child(10) { animation-delay: 0.2s; }

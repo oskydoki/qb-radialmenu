@@ -1,0 +1,219 @@
+/* Import Inter font for modern, cleaner look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Colors */
+    --primary-color: #c0195f94;
+    --primary-hover: #a52334;
+    --primary-light: rgba(143, 29, 46, 0.1);
+    --bg-dark: rgba(25, 25, 25, 0.9);
+    --bg-darker: rgba(20, 20, 20, 0.95);
+    --bg-item: rgba(36, 36, 36, 0.85);
+    --bg-item-hover: rgba(45, 45, 45, 0.9);
+    --text-color: #f0f0f0;
+    --text-secondary: #aaaaaa;
+    --border-color: rgba(82, 82, 82, 0.2);
+    --border-radius: 4px;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    --transition: all 0.15s ease;
+
+    /* Typography */
+    --menu-item-icon-size: 22px;
+    --menu-label-size: 11px;
+    --menu-center-font-size: 18px;
+
+    /* Font properties */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Spacing */
+    --spacing-small: 8px;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+    user-select: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Menu container styles */
+.circle-menu {
+    position: relative;
+    width: 450px; /* Smaller size */
+    height: 450px; /* Smaller size */
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.menu-items-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Menu item styles */
+.menu-item-wrapper {
+    position: absolute;
+    width: 65px; /* Smaller size */
+    height: 60px; /* Smaller size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center;
+    animation: spread 0.15s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+.menu-item {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-item); /* Semi-transparent background */
+    border: 1px solid var(--border-color); /* Gray border */
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    transform-origin: center;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+.menu-item:hover {
+    transform: scale(1.08);
+    background-color: var(--primary-color); /* Using the pink rose color */
+    border-color: rgba(255, 255, 255, 0.2); /* Lighter border to contrast with the pink */
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35); /* Enhanced shadow for better depth */
+}
+
+.menu-item i {
+    pointer-events: none;
+    margin-bottom: 4px;
+    font-size: var(--menu-item-icon-size);
+}
+
+.menu-item-label {
+    font-size: var(--menu-label-size);
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    color: var(--text-color);
+    margin-top: 2px;
+    max-width: 100%;
+    padding: 0 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Central text styles */
+.center-content {
+    position: absolute;
+    color: var(--text-color);
+    font-size: var(--menu-center-font-size);
+    font-family: var(--font-primary);
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    z-index: 100;
+}
+
+#central-text {
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+/* Animations */
+@keyframes spread {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(var(--translate-x), var(--translate-y));
+        opacity: 1;
+    }
+}
+
+@keyframes retract {
+    0% {
+        transform: translate(var(--translate-x), var(--translate-y));
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+}
+
+/* Special styling for item types */
+.menu-item.blue-item {
+    background-color: rgba(30, 136, 229, 0.75);
+    border: 1px solid rgba(82, 82, 82, 0.3);
+}
+
+.menu-item.blue-item:hover {
+    background-color: #1976d2; /* Slightly darker blue */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu-item.important {
+    background-color: rgba(143, 29, 46, 0.75);
+    border: 1px solid rgba(82, 82, 82, 0.3);
+}
+
+.menu-item.important:hover {
+    background-color: var(--primary-hover); /* Slightly darker rose color */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 15, 15, 0.2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.7);
+}
