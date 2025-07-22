@@ -244,6 +244,24 @@ const addClickListeners = () => {
     });
 };
 
+// Add right-click event listener to go back to previous menu
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    
+    // Only handle if menu is open
+    if (!isMenuOpen) return;
+    
+    // Check if we have previous menus in the stack
+    if (subMenuStack && subMenuStack.length > 0) {
+        // Get previous menu
+        menuItemsData = subMenuStack.pop();
+        updateMenuItems(menuItemsData);
+        
+        // Reset central text
+        setCentralText('');
+    }
+});
+
 const closeMenu = () => {
     const menu = document.getElementById('circle-menu');
     if (!menu) return;
